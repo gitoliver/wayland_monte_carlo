@@ -1,5 +1,3 @@
 # wayland_monte_carlo
 Instructions:
-qmake -project -o wayland_monte_carlo.pro
-qmake -o Makefile
-make
+g++ -I$GEMSHOME/gmml/includes/* -L$GEMSHOME/gmml//bin/ main.cpp -lgmml -o main.exe

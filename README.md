@@ -12,4 +12,4 @@ open main.cpp and edit this line:
 To reflect your system path. I hope to figure out how to not have this as a requirement.
 
 Now you can compile:
-g++ -std=c++0x -I$GEMSHOME/gmml/includes/* -L$GEMSHOME/gmml//bin/ main.cpp -lgmml -o main.exe
+g++ -std=c++0x -I$GEMSHOME/gmml/includes/* -L$GEMSHOME/gmml//bin/ monte_carlo.cpp -lgmml -o monte_carlo.exe

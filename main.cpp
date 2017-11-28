@@ -49,4 +49,21 @@ int main(){
     // Write out a pdb file with the rotated dihedral. Can view this file in a program like VMD.
     PdbFileSpace::PdbFile *outputPdbFile = example1.BuildPdbFileStructureFromAssembly(-1,0);
     outputPdbFile->Write("example1_rotated.pdb");
+    std::cout << "Here0" << std::endl;
+
+    // Testing adding an atom
+    Residue *residue = example1.GetResidues().at(0);
+    std::cout << "Here1" << std::endl;
+    GeometryTopology::Coordinate coord = residue->GetRingCenter();
+    std::cout << "Here2" << std::endl;
+
+    Atom *bead = new Atom(residue, "ZB", coord);
+    std::cout << "Here3" << std::endl;
+
+    residue->AddAtom(bead);
+    std::cout << "Here4" << std::endl;
+
+
+    outputPdbFile = example1.BuildPdbFileStructureFromAssembly(-1,0);
+    outputPdbFile->Write("example1_newAtom.pdb");
 }

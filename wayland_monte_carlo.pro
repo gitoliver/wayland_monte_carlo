@@ -39,4 +39,5 @@ HEADERS += /home/oliver/Programs/gems/gmml/includes/MolecularModeling/assembly.h
            ../../gems/gmml/includes/InputSet/CondensedSequenceSpace/condensedsequence.hpp \
            ../../gems/gmml/includes/utils.hpp \
            ../../gems/gmml/includes/MolecularModeling/residue.hpp
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    main_wayland.cpp

@@ -5,7 +5,7 @@
 #include <string>
 
 // Change this next line to your PATH:
-#include "/home/oliver/Programs/gems/gmml/includes/MolecularModeling/assembly.hpp"
+#include "/home/asdf/gems/gmml/includes/MolecularModeling/assembly.hpp"
 //#include "/home/oliver/Programs/gems/gmml/includes/gmml.hpp"
 
 using namespace MolecularModeling;

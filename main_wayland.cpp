@@ -7,6 +7,7 @@
 // Change this next line to your PATH:
 //#include "/home/ubunter/software/gems/gmml/includes/MolecularModeling/assembly.hpp"
 #include "/home/oliver/Programs/gems/gmml/includes/MolecularModeling/assembly.hpp"
+#include "/home/oliver/Programs/gems/gmml/includes/MolecularModeling/overlaps.hpp"
 
 
 /*
@@ -24,8 +25,6 @@ typedef std::vector<Residue*> ResidueVector;
 typedef std::vector<Atom*> AtomVector;
 
 
-
-
 int main(){
   Assembly glycoprotein("5rsa_cheat_solve.pdb", PDB);
   glycoprotein.BuildStructureByDistance();
@@ -35,7 +34,13 @@ int main(){
   srand(seed);
   cout << "Using seed: " << seed << endl;
 
-  double base_score = glycoprotein.CalculateAtomicOverlaps( &glycoprotein );
+  ///////////// Get pointers to protein and glycan parts of assembly ///////////
+  AtomVector protein = glycoprotein.GetAllAtomsOfAssemblyWithinProteinResidues();
+  AtomVector glycans = glycoprotein.GetAllAtomsOfAssemblyNotWithinProteinResidues();
+
+  /////////////////// Get a base score ////////////////////////////////
+  //double base_score = glycoprotein.CalculateAtomicOverlaps( &glycoprotein );
+  double base_score = gmml::CalculateAtomicOverlaps(protein, glycans); // I've made a function you can pass atomvectors to.
   cout << "INITIAL SCORE: " << base_score << endl;
   int cycle = 1;
 
@@ -115,7 +120,7 @@ int main(){
 
       cout << endl;
 
-      double current_score = glycoprotein.CalculateAtomicOverlaps( &glycoprotein );
+      double current_score = gmml::CalculateAtomicOverlaps(protein, glycans);
 
       if ( (current_score - 20) < base_score ){
         cout << ("\noutput/test_test_"+to_string(cycle)+".pdb\n");
